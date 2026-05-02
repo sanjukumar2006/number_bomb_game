@@ -1,6 +1,18 @@
 import random as r
 
-n=int(input("enter the number of element: "))
+def choice():
+    ask=input("enter your difficulty:\nEasy,Medium,hard:\n--->").lower()
+    if ask=="easy":
+        print("you have choosen easy level")
+        return 3
+    elif ask=="medium":
+        print("you have choosen medium level")
+        return 6
+    elif ask=="hard":
+        print("you have choosen hard level")
+        return 10        
+
+n=choice()
 
 l=[]
 a=0
