@@ -23,7 +23,11 @@ for _ in range(1,n+1):
 print(f"the number of element are: {l}")
 
 bomb=r.choice(l)
-print(f"bomb: {bomb}")
+help=input("do you want hint??(y/n)")
+if help=="y":
+    print(f"bomb: {bomb}")
+elif help=="n":
+    print("enjoy")    
 
 while a>1:
     
@@ -41,6 +45,7 @@ while a>1:
         break    
     
     if len(l)==1:
+         print("congratulation!")
          print("you won")
     
     a-=1
