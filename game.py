@@ -1,55 +1,67 @@
 import random as r
 
 def choice():
-    ask=input("enter your difficulty:\nEasy,Medium,hard:\n--->").lower()
-    if ask=="easy":
-        print("you have choosen easy level")
-        return 3
-    elif ask=="medium":
-        print("you have choosen medium level")
-        return 6
-    elif ask=="hard":
-        print("you have choosen hard level")
-        return 10        
+    while True:
+        ask=input("enter your difficulty:\nEasy,Medium,hard:\n--->").lower()
+        if ask=="easy":
+            print("you have choosen easy level")
+            return 3
+        elif ask=="medium":
+            print("you have choosen medium level")
+            return 6
+        elif ask=="hard":
+            print("you have choosen hard level")
+            return 10    
+        else:
+            print("please choose from the given option")    
 
 n=choice()
 
 l=[]
-a=0
 for _ in range(1,n+1):
     l.append(_)
-    a+=1
+    
 
-print(f"the number of element are: {l}")
+print(f"The element are: {l}")
 
 bomb=r.choice(l)
-help=input("do you want hint??(y/n)")
-if help=="y":
+while True:
+    hint=input("do you want hint??(y/n)").lower()
+    if hint in ['y','n']:
+        break
+    
+    else:
+        print("please choose from y/n")
+        print("y is yes")
+        print("n is no")    
+
+
+if hint=="y":
     print(f"bomb: {bomb}")
-elif help=="n":
+elif hint=="n":
     print("enjoy")    
 
-while a>1:
+while len(l)>1:
     
-    player=int(input("enter your choice: "))
-    
-
-    if player != bomb:
-        print("that was not the bomb, you live for now")
-        l.remove(player)
-        print(l)
+    try:
+        player=int(input("enter your choice: "))
+        if player in l:
+            if player != bomb:
+                print("that was not the bomb, you live for now")
+                l.remove(player)
+                print(l)
         
 
-    else:
-        print("you lost, try again later")
-        break    
+            else:
+                print("you lost, try again later")
+                break    
+            
+            if len(l)==1:
+                 print("congratulation!")
+                 print("you won")
     
-    if len(l)==1:
-         print("congratulation!")
-         print("you won")
-    
-    a-=1
-   
-
-
-
+            
+        else:
+            print("please choose number from the list ")
+    except ValueError:
+        print("please enter a number ")
